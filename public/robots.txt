@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://boxchive.com/sitemap.xml
+Sitemap: https://boxchive.com/sitemap-index.xml
