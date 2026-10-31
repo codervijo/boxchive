@@ -66,10 +66,10 @@ https://search.google.com/search-console directly.
 - **Learning:** TBD
 
 ## 2026-10-30 — Low-KD cost / archive / handwriting / naming / retention pages will earn non-home impressions
-- **Status:** active (built, pending deploy — review clock starts on deploy day)
+- **Status:** active (built and committed `981d793` 2026-10-30; not deployed — blocked on form endpoint + pricing; review clock starts on deploy day)
 - **Hypothesis:** Buyers search the *task* (scanning cost, archive scanning, handwriting OCR, file naming, retention policy), not "digitization for [org type]" (those measure ~0 in SE Ranking). Ten answer-first pages targeting KD ≤ 20 clusters with 50–760 SV each will get the site indexed beyond `/` and produce impressions on the cost and archive pages first — the two closest to a purchase.
 - **KPI:** GSC impressions + indexed URLs for the 10 cluster-1 pages (`docs/seo-content-plan.md` § 6); secondary: assessment-form submissions from non-home landing pages (needs the form endpoint first).
 - **Baseline:** not measurable — GSC property not verified (see AI_AGENTS.md post-deploy checklist). Site had 1 URL in sitemap.
-- **Action:** v2.B — soft-404 fixed, absolute canonicals, WebSite/Breadcrumb/Article/FAQ schema, shared nav/footer, `/guides/` hub, `/llms.txt`, 10 new pages (plan § 6 cluster 1).
+- **Action:** v2.B — soft-404 fixed, absolute canonicals, WebSite/Breadcrumb/Article/FAQ schema, shared nav/footer, `/guides/` hub, `/llms.txt`, 10 new pages (plan § 6 cluster 1). Commit `981d793`.
 - **Result:** TBD — review 28 days after deploy
 - **Learning:** TBD
