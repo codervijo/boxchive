@@ -1,0 +1,25 @@
+---
+export interface Props {
+  heading?: string;
+  body?: string;
+}
+
+const {
+  heading = "Find out what your archive would actually take.",
+  body = "Tell us about your boxes. We'll come back with a realistic estimate, a sample workflow for your records, and an honest read on whether Boxchive fits — or whether you need a traditional scanning vendor.",
+} = Astro.props;
+---
+<section class="bg-[color:var(--ink)] text-[color:var(--paper)] relative z-[1]">
+  <div class="container-prose py-16 md:py-20 grid md:grid-cols-12 gap-8 items-center">
+    <div class="md:col-span-8">
+      <p class="eyebrow mb-4" style="color: oklch(0.78 0.04 70);">Free digitization assessment</p>
+      <h2 class="font-serif text-3xl md:text-4xl leading-tight text-[color:var(--paper)]">{heading}</h2>
+      <p class="mt-4 opacity-90 leading-relaxed max-w-2xl">{body}</p>
+    </div>
+    <div class="md:col-span-4 md:text-right">
+      <a href="/#assessment" class="btn-primary" style="background: var(--paper); color: var(--ink);">
+        Request a free assessment
+      </a>
+    </div>
+  </div>
+</section>

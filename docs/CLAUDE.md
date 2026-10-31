@@ -65,3 +65,7 @@ mistakes at the point of writing, not at quarterly cleanup time.
 
 <Things deliberately *not* shipped. Append entries with rationale so
 future Claude sessions don't re-propose them.>
+
+- **City / "near me" SEO pages — rejected (2026-10-30).** SERPs are local-pack; Boxchive isn't a local bureau. Fake-local pages = spam. Evidence: `docs/seo-content-plan.md` § 6 Rejected.
+- **Publishing prices — deferred (2026-10-30).** Pricing not set; `src/data/pricing.ts` is `null` and every page renders neutral copy. Don't hard-code prices in page copy.
+- **Medical-records pages — held (2026-10-30).** Would imply HIPAA claims that aren't approved.

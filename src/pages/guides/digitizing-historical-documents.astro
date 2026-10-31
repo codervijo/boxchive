@@ -1,0 +1,145 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+const faqs = [
+  {
+    q: "What's the best way to digitize old documents?",
+    a: "Inventory first, digitize the most-requested records first, handle fragile items as little as possible, capture with whatever equipment fits the material (sheet-fed scanner, flatbed, overhead, or phone), name files consistently from day one, run OCR, and keep at least three copies of the results.",
+  },
+  {
+    q: "What resolution should I scan historical documents at?",
+    a: "300 dpi is a common minimum for text documents used as access copies. Preservation-grade masters follow imaging standards such as FADGI and usually call for specialist equipment.",
+  },
+  {
+    q: "Can I digitize documents without a scanner?",
+    a: "Yes. A modern phone produces readable, OCR-able images of most pages if you control light, angle and focus. It's also the gentlest option for bound or fragile items, which shouldn't go through a sheet-fed scanner.",
+  },
+  {
+    q: "Should I throw away the originals after digitizing?",
+    a: "Not historical records. Digital copies are for access; the originals remain the record. Only destroy material your retention policy says can go, and only after confirming the digital copies are complete.",
+  },
+];
+---
+<ContentLayout
+  title="Digitizing Historical Documents: A 7-Step Guide for Small Archives | Boxchive"
+  description="How to digitize old and fragile documents: inventory, prioritize, handle safely, capture with a scanner or phone, name files, make text searchable, and back everything up."
+  path="/guides/digitizing-historical-documents/"
+  h1="Digitizing historical documents: a 7-step guide"
+  eyebrow="Guide"
+  lede="Digitizing old records goes well when you decide the boring things up front — what you have, what matters most, how files will be named — and badly when you start scanning box one and hope to sort it out later. Here's the order that works for small archives."
+  crumbs={[{ name: "Guides", path: "/guides/" }]}
+  faqs={faqs}
+  related={["/archive-digitization/", "/guides/file-naming-conventions/", "/guides/handwriting-ocr/"]}
+>
+  <h2>The short version</h2>
+  <ol>
+    <li><strong>Inventory</strong> what you have, roughly.</li>
+    <li><strong>Prioritize</strong> by what people actually use.</li>
+    <li><strong>Handle safely</strong> — less handling is better.</li>
+    <li><strong>Capture</strong> with equipment that fits the material.</li>
+    <li><strong>Name files</strong> consistently from the first page.</li>
+    <li><strong>Make the text searchable</strong> with OCR and basic details.</li>
+    <li><strong>Store and back up</strong> in at least three places.</li>
+  </ol>
+
+  <h2>1. Inventory what you have</h2>
+  <p>
+    You don't need a finding aid to start, just a list. For each box or series, note what's in it,
+    the rough date range, condition, format (loose sheets, bound volumes, clippings, oversized),
+    and whether it's typed or handwritten. A spreadsheet is fine.
+  </p>
+  <p>
+    The inventory tells you how big the job is, which equipment you need, and where the hard pages
+    are. It's also exactly what any vendor — or Boxchive — needs to give you an honest estimate.
+  </p>
+
+  <h2>2. Prioritize by use, not shelf order</h2>
+  <p>Start with records that get asked for:</p>
+  <ul>
+    <li>Founding documents, charters, bylaws, deeds.</li>
+    <li>Board and committee minutes.</li>
+    <li>Registers and membership rolls.</li>
+    <li>Whatever supports an upcoming anniversary, exhibit, history, or grant application.</li>
+  </ul>
+  <p>Then add anything visibly deteriorating, so at least an access copy exists.</p>
+
+  <h2>3. Handle safely</h2>
+  <ul>
+    <li>Work on a clean, dry, flat surface away from food and drink.</li>
+    <li>Many conservators, including the Library of Congress, advise clean, dry hands rather than
+      cotton gloves for most paper, because gloves reduce dexterity and make tears more likely.</li>
+    <li>Don't force bound volumes flat; support the spine and photograph pages at the angle the
+      binding allows.</li>
+    <li>Don't remove rusted staples or old tape yourself if the paper is brittle — leave it and note
+      it.</li>
+    <li>Fragile and brittle items should never go through a sheet-fed scanner.</li>
+  </ul>
+
+  <h2>4. Capture: scanner, overhead, or phone</h2>
+  <table>
+    <thead>
+      <tr><th>Method</th><th>Good for</th><th>Avoid for</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sheet-fed scanner</td><td>Sturdy, loose, standard-size paper</td><td>Anything fragile, bound, or stapled</td></tr>
+      <tr><td>Flatbed scanner</td><td>Single fragile sheets, photos, clippings</td><td>Large volumes of pages (slow); thick bound books</td></tr>
+      <tr><td>Overhead / book scanner</td><td>Bound volumes, high volume, preservation work</td><td>Small budgets — specialist equipment</td></tr>
+      <tr><td>Phone camera</td><td>Bound and fragile items in place; mixed material; no equipment budget</td><td>Preservation-grade masters; large-format items</td></tr>
+    </tbody>
+  </table>
+  <p>
+    For text documents meant as access copies, 300 dpi is a common minimum. For phone photos, what
+    matters is even light without glare, the camera held parallel to the page, the whole page in
+    frame, and sharp focus. Preservation masters made to standards such as FADGI need specialist
+    equipment.
+  </p>
+
+  <h2>5. Name files from the first page</h2>
+  <p>
+    Renaming thousands of files later is miserable. Pick a convention — ideally the one your paper
+    files already use — and apply it from day one. A pattern like
+    <code>1962-03-14_board-minutes_p01</code> sorts by date and tells you what a file is without
+    opening it. Our <a href="/guides/file-naming-conventions/">file naming guide</a> has rules,
+    examples and a builder.
+  </p>
+
+  <h2>6. Make the text searchable</h2>
+  <p>
+    An image isn't searchable until OCR turns it into text. Add basic details — date, document
+    type, key names — and the archive answers real questions like "all minutes from the 1970s" or
+    "every letter mentioning the building fund." See
+    <a href="/searchable-archive/">what makes an archive searchable</a>.
+  </p>
+  <p>
+    Handwritten pages are the hard case: standard OCR does little with old cursive. Read
+    <a href="/guides/handwriting-ocr/">handwriting OCR for old records</a> before promising anyone
+    that the registers will be searchable.
+  </p>
+
+  <h2>7. Store and back up</h2>
+  <p>
+    Follow the 3-2-1 rule: keep three copies, on two different kinds of storage, with one copy
+    off-site. Check the copies periodically — a backup nobody has opened in five years isn't one.
+    Keep the originals; digital copies are for access, and the paper is still the record. Use your
+    <a href="/guides/nonprofit-document-retention-policy/">retention policy</a> to decide what, if
+    anything, can be destroyed.
+  </p>
+
+  <h2>Common mistakes</h2>
+  <ul>
+    <li>Starting capture before deciding on filenames.</li>
+    <li>Scanning to images with no OCR, then wondering why nothing is searchable.</li>
+    <li>Treating handwritten pages as done when nothing could read them.</li>
+    <li>Keeping the only copy on one laptop or one USB drive.</li>
+    <li>Trying to digitize everything before anyone can use anything — finish the high-value series
+      first.</li>
+  </ul>
+
+  <h2>Doing it with Boxchive</h2>
+  <p>
+    Boxchive covers steps 4 through 6 with a phone in place of a scanner: your staff or volunteers
+    photograph the pages, and Boxchive runs OCR, extracts dates and names, classifies each page by
+    document type, files it under your naming convention, and gives you a keyword-searchable
+    archive — flagging handwritten and fragile pages for human review.
+  </p>
+</ContentLayout>

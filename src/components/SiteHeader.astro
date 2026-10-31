@@ -1,0 +1,39 @@
+---
+import { byFamily } from "../data/pages";
+
+const audiences = byFamily("audiences");
+const primary = [
+  { href: "/archive-digitization/", label: "Archive digitization" },
+  { href: "/document-scanning-cost/", label: "Cost" },
+  { href: "/guides/", label: "Guides" },
+];
+---
+<header class="container-prose pt-8 pb-6 flex items-center justify-between gap-6">
+  <a href="/" class="flex items-center gap-2 shrink-0">
+    <span class="font-serif text-2xl tracking-tight">Boxchive</span>
+    <span class="eyebrow hidden sm:inline">Est. for archives</span>
+  </a>
+
+  <nav aria-label="Primary" class="hidden md:flex items-center gap-7 text-sm text-[color:var(--ink-soft)]">
+    {primary.map((l) => (
+      <a href={l.href} class="hover:text-[color:var(--oxblood)]">{l.label}</a>
+    ))}
+    {audiences.map((a) => (
+      <a href={a.path} class="hover:text-[color:var(--oxblood)]">{a.label}</a>
+    ))}
+  </nav>
+
+  <div class="flex items-center gap-4">
+    <a href="/#assessment" class="btn-ghost text-sm">Free assessment →</a>
+    <details class="md:hidden relative">
+      <summary class="list-none cursor-pointer eyebrow py-2" aria-label="Menu">Menu</summary>
+      <nav
+        aria-label="Mobile"
+        class="absolute right-0 mt-2 w-60 bg-[color:var(--paper)] border border-[color:var(--rule)] p-4 grid gap-3 text-sm z-20 shadow-lg"
+      >
+        {primary.map((l) => <a href={l.href}>{l.label}</a>)}
+        {audiences.map((a) => <a href={a.path}>{a.label}</a>)}
+      </nav>
+    </details>
+  </div>
+</header>

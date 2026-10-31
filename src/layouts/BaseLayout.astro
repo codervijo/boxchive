@@ -8,11 +8,12 @@ export interface Props {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
-  ogUrl?: string;
+  ogType?: string;
   twitterTitle?: string;
   twitterDescription?: string;
   twitterImage?: string;
   keywords?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -22,12 +23,38 @@ const {
   ogTitle,
   ogDescription,
   ogImage,
-  ogUrl = "/",
+  ogType = "website",
   twitterTitle,
   twitterDescription,
   twitterImage,
   keywords,
+  noindex = false,
 } = Astro.props;
+
+// Absolute URLs for canonical / OG — crawlers and social cards ignore relative ones.
+const site = Astro.site ?? new URL("https://boxchive.com");
+const canonicalUrl = new URL(canonical, site).href;
+const ogImageUrl = ogImage ? new URL(ogImage, site).href : undefined;
+const twitterImageUrl = twitterImage ? new URL(twitterImage, site).href : ogImageUrl;
+
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${site.origin}/#organization`,
+  name: "Boxchive",
+  url: `${site.origin}/`,
+  description:
+    "Boxchive turns phone photos of old paper documents into a searchable, organized digital archive for museums, historical societies, law firms, churches, and libraries.",
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${site.origin}/#website`,
+  name: "Boxchive",
+  url: `${site.origin}/`,
+  publisher: { "@id": `${site.origin}/#organization` },
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -37,21 +64,22 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
-    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta property="og:site_name" content="Boxchive" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={ogTitle ?? title} />
     <meta property="og:description" content={ogDescription ?? description} />
-    <meta property="og:url" content={ogUrl} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:url" content={canonicalUrl} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@boxchive" />
     <meta name="twitter:title" content={twitterTitle ?? title} />
     <meta name="twitter:description" content={twitterDescription ?? description} />
-    {twitterImage && <meta name="twitter:image" content={twitterImage} />}
+    {twitterImageUrl && <meta name="twitter:image" content={twitterImageUrl} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,13 +88,8 @@ const {
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter+Tight:wght@400;500;600&display=swap"
     />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Boxchive",
-      description:
-        "Boxchive turns phone photos of old paper documents into a searchable, organized digital archive for museums, historical societies, law firms, churches, and libraries.",
-    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
 
     <slot name="head" />
   </head>

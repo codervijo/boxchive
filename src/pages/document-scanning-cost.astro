@@ -1,0 +1,202 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { PRICING, PRICING_FALLBACK } from "../data/pricing";
+
+const faqs = [
+  {
+    q: "How much does document scanning cost per page?",
+    a: "Scanning vendors that publish prices commonly quote about $0.07 to $0.12 per page for standard black-and-white scanning at 300 dpi (RecordsForce, 2024; ScanNmore, 2025). Fragile, bound, oversized, or handwritten material, color capture, and detailed indexing usually cost more.",
+  },
+  {
+    q: "How much does it cost to scan a banker's box of documents?",
+    a: "RecordsForce (2024) estimates roughly $140 to $300 per Bankers Box for standard scanning. Ricoh's PFU blog (2024) puts a full archive box at 2,000 to 3,250 pages, so the per-box figure depends heavily on how full your boxes are.",
+  },
+  {
+    q: "Why are quotes so different between vendors?",
+    a: "Most of the cost is labor, not the scanner: removing staples and folders, flattening pages, handling fragile items, indexing, quality control, and transport. Two vendors quoting the same box can be pricing very different amounts of that labor.",
+  },
+  {
+    q: "Is photographing documents with a phone cheaper than a scanning service?",
+    a: "It moves the capture labor in-house — your staff or volunteers photograph the pages — so you are not paying a vendor for prep and capture, and records never leave the building. Whether it is cheaper overall depends on how much volunteer time you have and how much processing (OCR, indexing, filing) you still need done.",
+  },
+];
+
+const sources = [
+  { vendor: "RecordsForce", date: "Sep 2024", figure: "$0.07–$0.12 per page (B&W, 300 dpi); ≈ $140–$300 per Bankers Box" },
+  { vendor: "ScanNmore", date: "Jun 2025", figure: "$0.07–$0.12 per page for standard letter-size documents" },
+  { vendor: "Record Nations", date: "Oct 2017", figure: "around 7–12 cents per page, lower at higher volume" },
+  { vendor: "vdocs", date: "undated", figure: "$149 per box; $0.069 per page; custom $0.05–$0.15 per scan" },
+  { vendor: "Ricoh / PFU blog", date: "Jun 2024", figure: "archive boxes hold 2,000–3,250 pages" },
+];
+---
+<ContentLayout
+  title="Document Scanning Cost: Per-Page & Per-Box Prices (2026) | Boxchive"
+  description="What document scanning costs per page and per box, according to vendors' published prices — what drives the price up, the hidden costs for small archives, and a calculator for your boxes."
+  path="/document-scanning-cost/"
+  h1="How much does document scanning cost?"
+  eyebrow="Cost guide"
+  lede="Scanning vendors that publish prices cluster around 7 to 12 cents a page for standard black-and-white work — roughly $140 to $300 for a full banker's box. Old, fragile, bound, or handwritten records cost more. Here is what the published numbers say, what drives them, and how to estimate your own boxes."
+  faqs={faqs}
+  related={["/document-scanning-services-alternative/", "/archive-digitization/", "/for/historical-societies/"]}
+  ctaHeading="Get a real number for your boxes."
+>
+  <h2>Published scanning prices</h2>
+  <p>
+    Most scanning bureaus quote by the page or by the box. These are the figures vendors publish
+    themselves. We list them so you can sanity-check a quote — they are not Boxchive prices.
+  </p>
+  <table>
+    <thead>
+      <tr><th>Source</th><th>Published</th><th>Figure</th></tr>
+    </thead>
+    <tbody>
+      {sources.map((s) => (
+        <tr><td>{s.vendor}</td><td>{s.date}</td><td>{s.figure}</td></tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="source">
+    Figures as published on each vendor's website or blog; retrieved October 2026. Prices change —
+    confirm with any vendor before budgeting.
+  </p>
+
+  <h2>Estimate your own boxes</h2>
+  <p>
+    This calculator uses the published ranges above: 2,000–3,250 pages per full box and
+    $0.07–$0.12 per page. If you know your page count, enter it to replace the per-box range.
+  </p>
+
+  <div class="tool-panel not-prose" id="cost-calc">
+    <div class="grid sm:grid-cols-2 gap-5">
+      <label>Number of boxes
+        <input type="number" min="0" step="1" value="10" data-boxes />
+      </label>
+      <label>Exact page count (optional)
+        <input type="number" min="0" step="1" placeholder="Leave blank to use box range" data-pages />
+      </label>
+      <label>Low rate, $ per page
+        <input type="number" min="0" step="0.01" value="0.07" data-rate-low />
+      </label>
+      <label>High rate, $ per page
+        <input type="number" min="0" step="0.01" value="0.12" data-rate-high />
+      </label>
+    </div>
+    <div class="mt-6 border-t border-[color:var(--rule)] pt-5" aria-live="polite">
+      <p class="eyebrow mb-2">Estimated vendor scanning cost</p>
+      <p class="font-serif text-4xl" data-out-range>—</p>
+      <p class="mt-2 text-sm text-[color:var(--ink-soft)]" data-out-pages>—</p>
+      <p class="mt-4 text-sm text-[color:var(--ink-soft)]">
+        Standard scanning only. Fragile or bound material, color, indexing, pickup, and return or
+        destruction are typically priced on top.
+      </p>
+    </div>
+  </div>
+
+  <p>
+    Worked example with the defaults: 10 boxes × 2,000 pages × $0.07 = <strong>$1,400</strong> at
+    the low end; 10 boxes × 3,250 pages × $0.12 = <strong>$3,900</strong> at the high end.
+  </p>
+
+  <h2>What drives the price up</h2>
+  <p>
+    The scanner itself is fast. What you pay for is the handling around it, and old records need a
+    lot of handling.
+  </p>
+  <ul>
+    <li><strong>Document prep.</strong> Removing staples, clips, and bindings; unfolding; flattening;
+      sorting out mixed sizes. Decades-old files are full of all of it.</li>
+    <li><strong>Fragile or damaged paper.</strong> Brittle, torn, or water-damaged pages can't go
+      through a sheet-fed scanner and have to be handled one at a time.</li>
+    <li><strong>Bound volumes.</strong> Ledgers, registers, and minute books need flatbed or overhead
+      capture, page by page.</li>
+    <li><strong>Color and resolution.</strong> Color or higher-dpi capture means bigger files and slower
+      throughput.</li>
+    <li><strong>Indexing and metadata.</strong> OCR is often included; keying in dates, names, or
+      document types per file usually isn't.</li>
+    <li><strong>Logistics.</strong> Pickup, chain-of-custody paperwork, secure storage while in
+      process, and return or certified destruction afterward.</li>
+  </ul>
+
+  <h2>The costs that don't show up on the quote</h2>
+  <p>For a small museum, historical society, or church, the per-page price is only part of it:</p>
+  <ul>
+    <li><strong>Records leave the building.</strong> Many boards and donors are uneasy shipping
+      irreplaceable originals, and some items shouldn't travel at all.</li>
+    <li><strong>Staff time still happens.</strong> Someone has to pull, box, inventory, and check
+      everything going out and coming back.</li>
+    <li><strong>The output may not be what you need.</strong> A folder of PDFs named by box number
+      is not a searchable archive. Ask exactly what you get: text, filenames, folder structure,
+      fields.</li>
+    <li><strong>Handwriting.</strong> Standard OCR does little with handwritten pages. See
+      <a href="/guides/handwriting-ocr/">handwriting OCR for old records</a>.</li>
+  </ul>
+
+  <h2>The phone-capture alternative</h2>
+  <p>
+    Boxchive takes a different route. Your staff or volunteers photograph the pages with a phone, so
+    nothing leaves the building and you aren't paying a bureau for capture. Boxchive runs OCR on
+    every page, pulls out dates and names, sorts pages by document type, files them under your
+    existing naming convention, and gives you a keyword-searchable archive. Handwritten and fragile
+    pages are flagged for human review rather than passed off as perfect transcriptions.
+  </p>
+  <div class="callout">
+    <p>
+      {PRICING
+        ? `Boxchive pricing: $${PRICING.monthlyFrom}–$${PRICING.monthlyTo} per month.`
+        : PRICING_FALLBACK}
+      {" "}If a traditional vendor is the better fit for your material, we'll say so.
+    </p>
+  </div>
+  <p>
+    Comparing approaches side by side? See <a href="/document-scanning-services-alternative/">scanning
+    vendor vs. in-house vs. phone capture</a>, or the full
+    <a href="/archive-digitization/">archive digitization overview</a>.
+  </p>
+
+  <script>
+    const root = document.getElementById("cost-calc");
+    if (root) {
+      const num = (sel: string) => {
+        const el = root.querySelector<HTMLInputElement>(sel);
+        const v = el ? parseFloat(el.value) : NaN;
+        return Number.isFinite(v) && v >= 0 ? v : NaN;
+      };
+      const usd = (n: number) =>
+        n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+      const outRange = root.querySelector("[data-out-range]");
+      const outPages = root.querySelector("[data-out-pages]");
+      const PAGES_LOW = 2000;
+      const PAGES_HIGH = 3250;
+      const update = () => {
+        const boxes = num("[data-boxes]");
+        const exact = num("[data-pages]");
+        const lo = num("[data-rate-low]");
+        const hi = num("[data-rate-high]");
+        if (!outRange || !outPages) return;
+        if (!Number.isFinite(lo) || !Number.isFinite(hi)) {
+          outRange.textContent = "—";
+          outPages.textContent = "Enter both rates.";
+          return;
+        }
+        let pLow: number, pHigh: number;
+        if (Number.isFinite(exact) && exact > 0) {
+          pLow = pHigh = exact;
+          outPages.textContent = `${exact.toLocaleString("en-US")} pages (your count)`;
+        } else if (Number.isFinite(boxes)) {
+          pLow = boxes * PAGES_LOW;
+          pHigh = boxes * PAGES_HIGH;
+          outPages.textContent = `${pLow.toLocaleString("en-US")}–${pHigh.toLocaleString("en-US")} pages (${PAGES_LOW.toLocaleString("en-US")}–${PAGES_HIGH.toLocaleString("en-US")} per box)`;
+        } else {
+          outRange.textContent = "—";
+          outPages.textContent = "Enter a number of boxes or pages.";
+          return;
+        }
+        const a = pLow * Math.min(lo, hi);
+        const b = pHigh * Math.max(lo, hi);
+        outRange.textContent = a === b ? usd(a) : `${usd(a)} – ${usd(b)}`;
+      };
+      root.addEventListener("input", update);
+      update();
+    }
+  </script>
+</ContentLayout>

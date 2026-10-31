@@ -1,0 +1,118 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { PRICING_FALLBACK, PRICING } from "../data/pricing";
+
+const faqs = [
+  {
+    q: "What does a document scanning service actually do?",
+    a: "A typical bureau picks up or receives your boxes, preps the paper (staples, folds, sorting), scans it, runs OCR, applies whatever indexing you paid for, checks quality, and then returns, stores, or destroys the originals.",
+  },
+  {
+    q: "When should I hire a traditional scanning vendor?",
+    a: "When you need preservation-grade master images to an imaging standard, have large-format items such as maps or plans, have very high page volumes on a deadline, or simply have no one available to handle the pages yourself.",
+  },
+  {
+    q: "Is Boxchive a scanning service?",
+    a: "Not in the traditional sense. Boxchive does not collect your boxes. Your staff or volunteers photograph the pages with a phone, and Boxchive does the reading, sorting, filing and search — OCR, extracting dates and names, classifying document types, and filing pages under your naming convention.",
+  },
+  {
+    q: "Do my documents leave the building with Boxchive?",
+    a: "No. The originals stay where they are; only the photos are sent for processing.",
+  },
+];
+---
+<ContentLayout
+  title="Document Scanning Services Alternative for Small Archives | Boxchive"
+  description="Scanning vendor, in-house scanner, or phone capture? An honest comparison for small museums, historical societies, churches and law firms — and when a traditional scanning service is the right call."
+  path="/document-scanning-services-alternative/"
+  h1="An alternative to document scanning services"
+  eyebrow="Compare your options"
+  lede="Document scanning services are built for offices that can box up files and ship them away. Small archives often can't — or don't want to. There are three practical ways to turn paper into searchable files, and each one wins in different situations."
+  schemaType="WebPage"
+  faqs={faqs}
+  related={["/document-scanning-cost/", "/archive-digitization/", "/searchable-archive/"]}
+>
+  <h2>What you get from a scanning service</h2>
+  <p>
+    Whether it's a national records company, a regional imaging bureau, or a print shop, the job
+    looks broadly the same:
+  </p>
+  <ol>
+    <li><strong>Intake.</strong> Boxes are picked up or dropped off, with a chain-of-custody record.</li>
+    <li><strong>Prep.</strong> Staples and clips removed, pages unfolded and sorted.</li>
+    <li><strong>Capture.</strong> Sheet-fed scanning for loose paper; flatbed or overhead for bound or fragile items.</li>
+    <li><strong>Text and indexing.</strong> OCR, and whatever index fields you contracted for.</li>
+    <li><strong>Quality control.</strong> Spot checks or full review against the originals.</li>
+    <li><strong>Delivery and disposition.</strong> Files delivered; originals returned, stored, or destroyed.</li>
+  </ol>
+  <p>
+    You pay mostly for steps 2, 4 and 6 — the labor. Published per-page rates are collected in our
+    <a href="/document-scanning-cost/">document scanning cost guide</a>.
+  </p>
+
+  <h2>Three ways to get there</h2>
+  <table>
+    <thead>
+      <tr><th></th><th>Scanning vendor</th><th>In-house scanner</th><th>Phone capture + Boxchive</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Who handles the pages</strong></td><td>Vendor staff</td><td>Your staff / volunteers</td><td>Your staff / volunteers</td></tr>
+      <tr><td><strong>Originals leave the building</strong></td><td>Usually yes</td><td>No</td><td>No</td></tr>
+      <tr><td><strong>Equipment to buy</strong></td><td>None</td><td>Scanner, software</td><td>A modern phone</td></tr>
+      <tr><td><strong>Bound and fragile items</strong></td><td>Handled with specialist equipment, at extra cost</td><td>Hard with a sheet-fed scanner</td><td>Photographed in place, page by page</td></tr>
+      <tr><td><strong>OCR</strong></td><td>Usually included</td><td>Depends on your software</td><td>On every page</td></tr>
+      <tr><td><strong>Dates, names, document types</strong></td><td>Paid indexing, if contracted</td><td>Manual</td><td>Extracted and classified automatically</td></tr>
+      <tr><td><strong>Filed under your naming convention</strong></td><td>If specified in the contract</td><td>Manual</td><td>Yes</td></tr>
+      <tr><td><strong>Handwritten pages</strong></td><td>Varies; often image only</td><td>Image only unless you transcribe</td><td>Flagged and human-reviewed</td></tr>
+      <tr><td><strong>Preservation-grade masters</strong></td><td>Available from specialist vendors</td><td>Possible with the right equipment and calibration</td><td>No — phone photos are access copies</td></tr>
+    </tbody>
+  </table>
+
+  <h2>When a traditional vendor is the right call</h2>
+  <p>We'd rather lose the sale than point you the wrong way. Hire a vendor when:</p>
+  <ul>
+    <li>You need <strong>preservation-quality master images</strong> made to an imaging standard
+      (for example, the U.S. Federal Agencies Digital Guidelines Initiative, FADGI), not just
+      searchable access copies.</li>
+    <li>You have <strong>large-format material</strong> — maps, architectural plans, oversized
+      broadsides.</li>
+    <li>You have <strong>very high volume and a hard deadline</strong> and no one available to
+      handle the pages.</li>
+    <li>The records are going to be <strong>destroyed after scanning</strong> and you need a
+      certified process for that.</li>
+  </ul>
+
+  <h2>When phone capture makes more sense</h2>
+  <ul>
+    <li>The originals <strong>can't or shouldn't leave</strong> — donor restrictions, fragility, or
+      your board's comfort.</li>
+    <li>You have <strong>volunteers or staff time</strong> but no budget line for a capital
+      digitization project.</li>
+    <li>What you need is <strong>findability</strong>: being able to answer "do we have anything on
+      the 1962 building fund?" in seconds.</li>
+    <li>You have <strong>mixed material</strong> — typed minutes alongside handwritten registers —
+      and want an honest record of which pages were read confidently and which need a person.</li>
+  </ul>
+
+  <h2>Questions to ask any vendor before you sign</h2>
+  <ol>
+    <li>What exactly is the per-page or per-box price, and what prep is included in it?</li>
+    <li>How do you handle bound, fragile, or oversized items, and what do they cost?</li>
+    <li>What do the delivered files look like — format, filenames, folder structure?</li>
+    <li>Is the OCR text searchable inside the files? What happens with handwriting?</li>
+    <li>Which index fields are included, and who decides how documents are named?</li>
+    <li>Where are the originals while you have them, and how are they returned?</li>
+    <li>Can we see a sample of delivered output from a similar collection?</li>
+  </ol>
+
+  <h2>How Boxchive works</h2>
+  <p>
+    Staff or volunteers photograph the pages with any modern phone. Boxchive reads every page with
+    OCR, extracts dates, names and other details, classifies each page by document type — minutes,
+    correspondence, registries, case files — and files it under your organization's existing naming
+    convention. The result is a keyword-searchable archive. Handwritten, faded or damaged pages are
+    flagged and reviewed by a person, and you get a clear record of what was transcribed confidently
+    and what needs a second look.
+  </p>
+  <p>{PRICING ? `Pricing: $${PRICING.monthlyFrom}–$${PRICING.monthlyTo} per month.` : PRICING_FALLBACK}</p>
+</ContentLayout>

@@ -78,7 +78,7 @@ docker exec -w /usr/src/app <name> make test proj=boxchive.com
 ## Deployment info
 
 - **Platform:** Cloudflare Workers (Static Assets) — *not* Vercel.
-- **Config:** `wrangler.jsonc` at the repo root — points `assets.directory` at `./dist` and uses `not_found_handling: "single-page-application"` for SPA client-side routing.
+- **Config:** `wrangler.jsonc` at the repo root — points `assets.directory` at `./dist` and uses `not_found_handling: "404-page"` (serves `src/pages/404.astro` with HTTP 404; changed from `single-page-application` in v2.B because it returned the homepage with 200 for every unknown URL — a soft-404).
 - **Headers:** `public/_headers` — cache (`/assets/*` immutable, HTML no-cache) + security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`). Vite copies `public/` into `dist/` at build, so the file ships with the assets.
 - **Build:** `pnpm build` → `dist/`. Wrangler picks up `dist/` via `wrangler.jsonc`.
 - **Deploy:** `wrangler deploy` (locally) or via Cloudflare's Git integration on push.
@@ -96,6 +96,21 @@ docker exec -w /usr/src/app <name> make test proj=boxchive.com
 *what content this site needs — page types, initial topics, format mix (long-form vs reference vs tool)*
 
 Page types: one conversion-focused landing page now; programmatic [service]/[city] and [service]/[org-type] pages later (e.g. archive-digitization/[city], document-scanning/historical-societies). Topics: cost of digitizing archives vs enterprise vendors, how phone-photo digitization works, document digitization for museums / historical societies / law firms / churches, preserving and searching old records, grant-readiness of digital archives. Format mix: high-intent landing/service pages as the core, supported by a small set of educational explainer articles targeting buyer-question queries ("how much does it cost to digitize archives," "how to digitize old documents without a scanner"); original substantive copy throughout — no thin pages.
+
+### SEO content plan
+
+**`docs/seo-content-plan.md` is authoritative for SEO pages** (supersedes the
+page-type sketch above, which predates keyword research): audit, treg keyword +
+SERP data with sources, page families, the ~40-page roadmap, per-page specs,
+claims guardrails, and implementation status. Read its § 4 *Claims guardrails*
+before writing any page. Key evidence-based changes from the sketch: no
+`[service]/[city]` pages (local-pack SERPs, Boxchive isn't local); org-type
+pages exist for conversion, not traffic (their queries measure ~0).
+
+New pages: add to `src/data/pages.ts` (drives header, footer, `/guides/` hub,
+related blocks, `/llms.txt`), use `src/layouts/ContentLayout.astro`, read prices
+only from `src/data/pricing.ts`. `src/__tests__/seo.test.js` checks the built
+`dist/` for every page (run after `pnpm build`).
 
 ### Post-deploy checklist (do these once after the first successful deploy)
 

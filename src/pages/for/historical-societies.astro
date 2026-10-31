@@ -1,0 +1,110 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+const faqs = [
+  {
+    q: "Can volunteers do the photographing?",
+    a: "Yes — that's the intended workflow. Any volunteer with a modern phone can photograph pages. Boxchive handles the reading, sorting and filing.",
+  },
+  {
+    q: "Do our records have to leave the building?",
+    a: "No. The originals stay where they are. Only the photos are sent for processing.",
+  },
+  {
+    q: "What about handwritten minutes books and registers?",
+    a: "Handwritten, faded and damaged pages are flagged and human-reviewed, and the archive records which pages were transcribed confidently and which need a second look.",
+  },
+  {
+    q: "We already have a way we file things. Do we have to change it?",
+    a: "No. Boxchive files pages using your existing naming convention.",
+  },
+  {
+    q: "What does it cost?",
+    a: "Pricing is quoted after a free assessment of your records. We'll also tell you if a traditional scanning vendor would serve you better.",
+  },
+];
+---
+<ContentLayout
+  title="Digitizing Historical Society Archives with Volunteers | Boxchive"
+  description="How small historical societies make minutes, membership rolls, scrapbooks, clippings and registers searchable — with volunteers and a phone, without sending the originals away."
+  path="/for/historical-societies/"
+  h1="Searchable archives for historical societies"
+  eyebrow="Who it's for"
+  lede="Most historical societies hold decades of minutes, rolls, scrapbooks and clippings that only one or two longtime members know how to find. Boxchive turns volunteer phone photos of those pages into an archive anyone can search, and the originals never leave your building."
+  schemaType="WebPage"
+  faqs={faqs}
+  related={["/guides/digitizing-historical-documents/", "/guides/handwriting-ocr/", "/document-scanning-cost/"]}
+  ctaHeading="Tell us what's in your boxes."
+>
+  <h2>What's usually in the boxes</h2>
+  <ul>
+    <li>Minutes books from the society's founding onward.</li>
+    <li>Membership rolls and dues ledgers.</li>
+    <li>Newsletters and annual programs.</li>
+    <li>Scrapbooks and loose newspaper clippings.</li>
+    <li>Correspondence — with members, donors, families, other institutions.</li>
+    <li>Local registers, deeds, and records donated by families and businesses.</li>
+  </ul>
+  <p>
+    Some of it is typed, a lot of it is handwritten, and much of it is bound, glued, or fragile —
+    exactly the material that's hardest to send to a scanning bureau.
+  </p>
+
+  <h2>The constraints you're working with</h2>
+  <ul>
+    <li><strong>Volunteers, not staff.</strong> Work happens a few hours at a time.</li>
+    <li><strong>No IT department.</strong> Whatever you use has to work without one.</li>
+    <li><strong>Records can't travel.</strong> Donor expectations, fragility, or simply the board's
+      comfort.</li>
+    <li><strong>Grant timelines.</strong> Anniversaries, local-history books, and grant applications
+      all need specific records found quickly.</li>
+  </ul>
+
+  <h2>How it works for a historical society</h2>
+  <ol>
+    <li><strong>Pick a starting series.</strong> Usually the minutes books or whatever researchers
+      ask for most.</li>
+    <li><strong>Volunteers photograph pages</strong> with their phones, one page per photo, in order.</li>
+    <li><strong>Boxchive reads every page</strong> with OCR and extracts dates and names.</li>
+    <li><strong>Pages are classified and filed</strong> — minutes, correspondence, registers,
+      clippings — under your society's existing naming convention.</li>
+    <li><strong>Handwritten and damaged pages are flagged</strong> and human-reviewed.</li>
+    <li><strong>Your archive is keyword-searchable.</strong> "Every mention of the Hendricks
+      family" becomes a search, not a weekend.</li>
+  </ol>
+
+  <h2>What to digitize first</h2>
+  <ol>
+    <li>Minutes books — the society's own record of itself.</li>
+    <li>Whatever supports your next project: an anniversary, an exhibit, a grant application.</li>
+    <li>Fragile scrapbooks and clippings, so at least an access copy exists.</li>
+    <li>Registers and rolls that genealogists and families ask about.</li>
+  </ol>
+  <p>
+    The full step-by-step is in our
+    <a href="/guides/digitizing-historical-documents/">guide to digitizing historical documents</a>.
+  </p>
+
+  <h2>Handwritten records</h2>
+  <p>
+    Old handwriting is where generic tools let historical societies down. Boxchive flags
+    handwritten, faded and damaged pages for human review, and the archive tells you which pages
+    were transcribed confidently — so a search that comes back empty doesn't quietly mislead you.
+    Background in <a href="/guides/handwriting-ocr/">handwriting OCR for old records</a>.
+  </p>
+
+  <h2>Keeping and letting go</h2>
+  <p>
+    Digitizing is a good moment to adopt a retention policy if the society doesn't have one. Our
+    <a href="/guides/nonprofit-document-retention-policy/">nonprofit retention policy guide</a>
+    covers what's typically kept permanently and how to decide what to digitize. Historical
+    material stays: the digital archive is for access, and the originals remain the record.
+  </p>
+
+  <h2>Budget</h2>
+  <p>
+    If you've been quoted for traditional scanning, our
+    <a href="/document-scanning-cost/">document scanning cost guide</a> lists published vendor
+    rates and has a calculator for your boxes. Boxchive pricing is quoted after a free assessment.
+  </p>
+</ContentLayout>

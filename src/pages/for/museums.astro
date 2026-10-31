@@ -1,0 +1,95 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+const faqs = [
+  {
+    q: "Does Boxchive replace our collection management system?",
+    a: "No. Collection management software catalogs objects. Boxchive makes the paper records around them — accession files, deeds of gift, correspondence, minutes — searchable. The two do different jobs.",
+  },
+  {
+    q: "Does Boxchive photograph or catalog objects?",
+    a: "No. Boxchive works with paper documents: pages photographed with a phone, read with OCR, classified by document type and filed under your naming convention.",
+  },
+  {
+    q: "Can it handle handwritten accession ledgers?",
+    a: "Handwritten, faded and damaged pages are flagged and human-reviewed, and the archive records which pages were transcribed confidently and which need a second look.",
+  },
+  {
+    q: "Do files leave the museum?",
+    a: "No. The originals stay on-site; only the photos are sent for processing.",
+  },
+];
+---
+<ContentLayout
+  title="Museum Documentation & Records Digitization for Small Museums | Boxchive"
+  description="How small museums make accession files, deeds of gift, loan agreements, curatorial correspondence and board minutes searchable — alongside, not instead of, collection management software."
+  path="/for/museums/"
+  h1="Searchable records for small museums"
+  eyebrow="Who it's for"
+  lede="A museum's documentation is mostly paper: accession files, deeds of gift, loan agreements, condition reports, decades of correspondence and minutes. Your collection management system catalogs the objects. Boxchive makes the paper behind them searchable, without sending files out of the building."
+  schemaType="WebPage"
+  faqs={faqs}
+  related={["/archive-digitization/", "/searchable-archive/", "/document-scanning-cost/"]}
+  ctaHeading="Tell us about your files."
+>
+  <h2>The records behind the collection</h2>
+  <table>
+    <thead>
+      <tr><th>Record</th><th>Why people go looking for it</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Accession files and ledgers</td><td>Provenance, accession numbers, what came in when</td></tr>
+      <tr><td>Deeds of gift</td><td>Ownership, donor restrictions, deaccession questions</td></tr>
+      <tr><td>Loan agreements</td><td>Incoming and outgoing loans; old loans nobody closed</td></tr>
+      <tr><td>Condition reports</td><td>Conservation history</td></tr>
+      <tr><td>Curatorial correspondence</td><td>Research, attribution, donor relationships</td></tr>
+      <tr><td>Exhibition files</td><td>What was shown, labels, lenders</td></tr>
+      <tr><td>Board minutes</td><td>Governance decisions, acquisitions approvals</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Where collection management software stops</h2>
+  <p>
+    Collection management systems are built around object records. The supporting paper often
+    lives in filing cabinets, referenced by accession number at best. When someone asks "what did
+    the donor's letter actually say about restrictions?" the answer is in a folder, not the
+    database.
+  </p>
+  <p>
+    Boxchive doesn't replace your collection management system and doesn't claim to integrate
+    with it. It makes the paper searchable on its own terms: OCR text on every page, extracted
+    dates and names, pages classified by document type, filed under your existing naming
+    convention — which can follow the accession numbers your files already use.
+  </p>
+
+  <h2>How it works in a small museum</h2>
+  <ol>
+    <li><strong>Start with one series</strong> — usually accession files or deeds of gift.</li>
+    <li><strong>Staff, interns or volunteers photograph pages</strong> with a phone, in order.</li>
+    <li><strong>Boxchive reads and files each page</strong>: OCR, dates, names, document type,
+      your naming convention.</li>
+    <li><strong>Handwritten ledgers and faded carbons are flagged</strong> and human-reviewed.</li>
+    <li><strong>Search across the whole set</strong>: a donor's name, an accession number, a year.</li>
+  </ol>
+
+  <h2>Naming files to match accession numbers</h2>
+  <p>
+    If your paper files are organized by accession number, the digital ones should be too — for
+    example <code>1987-014_deed-of-gift_p01</code>. Our
+    <a href="/guides/file-naming-conventions/">file naming guide</a> has patterns and a builder.
+  </p>
+
+  <h2>Access copies, not preservation masters</h2>
+  <p>
+    Phone photos are access copies: readable, searchable, shareable. If you need preservation-grade
+    imaging of documents or objects to a standard such as FADGI, that's specialist work, and we'll
+    say so in your assessment. More in <a href="/archive-digitization/">archive digitization</a>.
+  </p>
+
+  <h2>Budget</h2>
+  <p>
+    Comparing against a scanning quote? Published vendor rates and a calculator are in our
+    <a href="/document-scanning-cost/">document scanning cost guide</a>. Boxchive pricing is quoted
+    after a free assessment.
+  </p>
+</ContentLayout>

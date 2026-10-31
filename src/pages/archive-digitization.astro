@@ -1,0 +1,121 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+const faqs = [
+  {
+    q: "What is archive digitization?",
+    a: "Turning physical records into digital files that people can find and use: capturing an image of each page, extracting the text, describing what each item is, and organizing it so it can be searched and accessed.",
+  },
+  {
+    q: "What's the difference between an access copy and a preservation master?",
+    a: "A preservation master is a high-fidelity image made to an imaging standard, with calibrated equipment, intended to stand in for the original long-term. An access copy is good enough to read, search and share. Phone photos are access copies.",
+  },
+  {
+    q: "Where should a small archive start?",
+    a: "With the records people ask for most — board minutes, founding documents, registers, frequently requested files — rather than starting at box one and working forward.",
+  },
+  {
+    q: "Do we need to buy a scanner?",
+    a: "Not for access-level digitization with Boxchive: a modern phone is enough. You would need specialist equipment, or a vendor, for preservation-grade masters or large-format items.",
+  },
+];
+---
+<ContentLayout
+  title="Archive Digitization for Small Organizations | Boxchive"
+  description="How small museums, historical societies, churches and law firms digitize their archives: access copies vs preservation masters, what to digitize first, and how phone capture with Boxchive fits."
+  path="/archive-digitization/"
+  h1="Archive digitization for small organizations"
+  eyebrow="Solution"
+  lede="Archive digitization is more than scanning. It's four jobs: capture an image of every page, get the text out, describe what each item is, and organize it so anyone can find it. Large institutions do this with dedicated staff and equipment. Small ones need a version that fits a volunteer schedule."
+  schemaType="WebPage"
+  faqs={faqs}
+  related={["/searchable-archive/", "/guides/digitizing-historical-documents/", "/document-scanning-cost/"]}
+>
+  <h2>The four parts of digitizing an archive</h2>
+  <table>
+    <thead>
+      <tr><th>Part</th><th>What it means</th><th>Where projects stall</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Capture</strong></td><td>An image of every page</td><td>Equipment cost; fragile and bound items</td></tr>
+      <tr><td><strong>Text</strong></td><td>OCR or transcription, so words become searchable</td><td>Handwriting; faded and damaged pages</td></tr>
+      <tr><td><strong>Description</strong></td><td>What each item is: date, people, document type</td><td>Hours of manual data entry</td></tr>
+      <tr><td><strong>Organization and access</strong></td><td>Consistent filenames and folders; a way to search</td><td>Thousands of files named <code>IMG_4021.jpg</code></td></tr>
+    </tbody>
+  </table>
+  <p>
+    Most small projects get through capture and stall at description. That's why a shelf of
+    scanned PDFs often turns out to be no easier to use than the boxes were.
+  </p>
+
+  <h2>Access copies vs. preservation masters</h2>
+  <p>
+    Decide early which one you're making, because it changes everything else about the project.
+  </p>
+  <ul>
+    <li><strong>Preservation masters</strong> are made to an imaging standard — in the U.S., commonly
+      the Federal Agencies Digital Guidelines Initiative (FADGI) — with calibrated equipment and
+      color targets. They're meant to stand in for the original if it's lost. This is specialist
+      work.</li>
+    <li><strong>Access copies</strong> are good enough to read, search, cite and share. For most
+      small organizations, the problem isn't that the originals are about to disappear. It's that
+      nobody can find anything in them. Access copies solve that.</li>
+  </ul>
+  <p>
+    Boxchive makes access copies. If you need FADGI-conformant masters, a specialist imaging vendor
+    is the right partner, and we'll say so in your assessment.
+  </p>
+
+  <h2>What to digitize first</h2>
+  <p>Triage by use, not by shelf order. Start with:</p>
+  <ol>
+    <li><strong>What people ask for.</strong> Board minutes, founding documents, deeds, membership
+      rolls, registers — whatever the director, board, or researchers request most.</li>
+    <li><strong>What a grant or project needs.</strong> Records that support an anniversary,
+      exhibition, history, or grant application.</li>
+    <li><strong>What's at risk.</strong> Items that are fading, brittle, or stored badly, so that at
+      least an access copy exists.</li>
+    <li><strong>Everything else</strong>, box by box, once the workflow is running.</li>
+  </ol>
+
+  <h2>A practical project, phase by phase</h2>
+  <h3>1. Inventory</h3>
+  <p>
+    List boxes and series, even roughly: what's in each, date range, condition, and whether it's
+    typed or handwritten. This is also what an honest estimate is based on.
+  </p>
+  <h3>2. Agree on naming</h3>
+  <p>
+    Decide how files will be named before anyone photographs a page. If you already have a
+    convention for your paper files, keep it. Our
+    <a href="/guides/file-naming-conventions/">file naming guide</a> has patterns and a builder.
+  </p>
+  <h3>3. Capture</h3>
+  <p>
+    With Boxchive, staff or volunteers photograph each page with a modern phone. Bound volumes are
+    photographed open, page by page; nothing is unbound or shipped.
+  </p>
+  <h3>4. Read, describe, file</h3>
+  <p>
+    Boxchive runs OCR on every page, extracts dates and names, classifies each page by document
+    type, and files it under your naming convention.
+  </p>
+  <h3>5. Review the hard pages</h3>
+  <p>
+    Handwritten, faded and damaged pages are flagged and human-reviewed. The archive shows which
+    pages were transcribed confidently and which need a second look — see
+    <a href="/guides/handwriting-ocr/">handwriting OCR</a>.
+  </p>
+  <h3>6. Search and use</h3>
+  <p>
+    The finished archive is keyword-searchable. What that looks like day to day is covered in
+    <a href="/searchable-archive/">what makes an archive searchable</a>.
+  </p>
+
+  <h2>Who this is for</h2>
+  <p>
+    Small organizations with irreplaceable paper and no dedicated IT:
+    <a href="/for/historical-societies/">historical societies</a>,
+    <a href="/for/museums/">museums</a>, churches, libraries, and small law firms.
+  </p>
+</ContentLayout>

@@ -1,0 +1,181 @@
+---
+// Shared shell for every inner page: header, breadcrumbs, title block,
+// prose body, FAQs, related pages, assessment CTA, footer — plus
+// BreadcrumbList / Article|WebPage / FAQPage structured data.
+import BaseLayout from "./BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import AssessmentCta from "../components/AssessmentCta.astro";
+import RelatedPages from "../components/RelatedPages.astro";
+
+export interface Faq {
+  q: string;
+  a: string;
+}
+
+export interface Crumb {
+  name: string;
+  path: string;
+}
+
+export interface Props {
+  title: string;
+  description: string;
+  path: string;
+  h1: string;
+  eyebrow: string;
+  lede: string;
+  crumbs?: Crumb[];
+  schemaType?: "Article" | "WebPage";
+  datePublished?: string;
+  dateModified?: string;
+  faqs?: Faq[];
+  related?: string[];
+  ctaHeading?: string;
+  ctaBody?: string;
+}
+
+const {
+  title,
+  description,
+  path,
+  h1,
+  eyebrow,
+  lede,
+  crumbs = [],
+  schemaType = "Article",
+  datePublished = "2026-10-30",
+  dateModified = datePublished,
+  faqs = [],
+  related = [],
+  ctaHeading,
+  ctaBody,
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://boxchive.com");
+const url = new URL(path, site).href;
+const trail: Crumb[] = [{ name: "Home", path: "/" }, ...crumbs, { name: h1, path }];
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: trail.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    item: new URL(c.path, site).href,
+  })),
+};
+
+const pageLd =
+  schemaType === "Article"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: h1,
+        description,
+        url,
+        mainEntityOfPage: url,
+        datePublished,
+        dateModified,
+        author: { "@id": `${site.origin}/#organization` },
+        publisher: { "@id": `${site.origin}/#organization` },
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: h1,
+        description,
+        url,
+        isPartOf: { "@id": `${site.origin}/#website` },
+        about: { "@id": `${site.origin}/#organization` },
+      };
+
+const faqLd =
+  faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={path}
+  ogType={schemaType === "Article" ? "article" : "website"}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(pageLd)} />
+  {faqLd && <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+
+  <SiteHeader />
+
+  <main class="relative">
+    <div class="container-prose">
+      <nav aria-label="Breadcrumb" class="text-xs text-[color:var(--ink-soft)] mb-8">
+        <ol class="flex flex-wrap gap-2">
+          {trail.map((c, i) => (
+            <li class="flex gap-2">
+              {i < trail.length - 1 ? (
+                <>
+                  <a href={c.path} class="hover:text-[color:var(--oxblood)]">{c.name}</a>
+                  <span aria-hidden="true">/</span>
+                </>
+              ) : (
+                <span aria-current="page">{c.name}</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <div class="max-w-3xl pb-12">
+        <p class="eyebrow mb-5">{eyebrow}</p>
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">{h1}</h1>
+        <p class="mt-6 text-lg md:text-xl text-[color:var(--ink-soft)] leading-relaxed">{lede}</p>
+        {schemaType === "Article" && (
+          <p class="mt-6 text-xs text-[color:var(--ink-soft)]">
+            Updated <time datetime={dateModified}>{new Date(dateModified).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })}</time>
+          </p>
+        )}
+      </div>
+      <div class="rule"></div>
+    </div>
+
+    <article class="container-prose py-14">
+      <div class="prose-archive max-w-3xl">
+        <slot />
+      </div>
+    </article>
+
+    {faqs.length > 0 && (
+      <section class="bg-[color:var(--paper-deep)] border-y border-[color:var(--rule)]" aria-labelledby="faq-heading">
+        <div class="container-prose py-16">
+          <h2 id="faq-heading" class="font-serif text-3xl md:text-4xl mb-10">Questions people ask</h2>
+          <div class="max-w-3xl divide-y divide-[color:var(--rule)] border-y border-[color:var(--rule)]">
+            {faqs.map((f) => (
+              <details class="py-5 group">
+                <summary class="cursor-pointer font-serif text-xl list-none flex justify-between gap-6">
+                  {f.q}
+                  <span class="text-[color:var(--oxblood)] group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                </summary>
+                <p class="mt-3 text-[color:var(--ink-soft)] leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <RelatedPages paths={related} />
+    <AssessmentCta heading={ctaHeading} body={ctaBody} />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

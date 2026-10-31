@@ -1,0 +1,103 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+const faqs = [
+  {
+    q: "Is a folder of scanned PDFs a searchable archive?",
+    a: "Only if the PDFs contain a text layer from OCR, and even then you can usually only search one file at a time unless something indexes them together. Without consistent filenames and fields like date and document type, finding things still means opening files one by one.",
+  },
+  {
+    q: "Can handwritten documents be made searchable?",
+    a: "Partly. Handwriting recognition has improved, but results on old cursive vary widely. The honest approach is to flag pages that couldn't be read confidently, so a search that misses them doesn't give you false confidence.",
+  },
+  {
+    q: "What does Boxchive do to make an archive searchable?",
+    a: "It runs OCR on every page, extracts dates, names and other details, classifies pages by document type, files them under your naming convention, and gives you keyword search across the whole archive. Handwritten and damaged pages are flagged and human-reviewed.",
+  },
+];
+---
+<ContentLayout
+  title="What Makes an Archive Searchable? OCR, Metadata & Filing | Boxchive"
+  description="A searchable archive needs three layers: OCR text, structured details like dates, names and document types, and consistent filing. Here's how each works, where handwriting breaks search, and how to test any 'searchable' claim."
+  path="/searchable-archive/"
+  h1="What makes an archive searchable"
+  eyebrow="Solution"
+  lede="An archive is searchable when you can type a name, a date, or a phrase and get back every page that matches — across the whole collection, not one file at a time. That takes three layers working together: the text, the details, and the filing."
+  schemaType="WebPage"
+  faqs={faqs}
+  related={["/archive-digitization/", "/guides/handwriting-ocr/", "/guides/file-naming-conventions/"]}
+>
+  <h2>Layer 1: the text</h2>
+  <p>
+    A photo or scan of a page is just a picture. Optical character recognition (OCR) turns the
+    picture into text a computer can search. Without it, the word "Hendricks" in a 1958 letter is
+    invisible to search.
+  </p>
+  <p>
+    OCR is reliable on clean typed and printed pages. It's much less reliable on handwriting,
+    faint carbon copies, and damaged paper — more on that below.
+  </p>
+
+  <h2>Layer 2: the details</h2>
+  <p>
+    Full-text search finds words. But many questions are about <em>kinds</em> of records and
+    <em>when</em> they're from:
+  </p>
+  <ul>
+    <li>"All board minutes from the 1970s."</li>
+    <li>"Every letter that mentions the Hendricks family."</li>
+    <li>"Deeds and property records, any year."</li>
+  </ul>
+  <p>
+    Answering those needs structured details on each page: dates, names of people and
+    organizations, and the document type. Archivists call this metadata. In small organizations
+    it's usually the part nobody has time to type in — which is why Boxchive extracts dates and
+    names and classifies each page by document type automatically.
+  </p>
+
+  <h2>Layer 3: the filing</h2>
+  <p>
+    Consistent filenames and folders mean results make sense when you see them, and the archive
+    still makes sense outside any one piece of software. A result called
+    <code>1962-03-14_board-minutes_p02.jpg</code> tells you what it is before you open it;
+    <code>IMG_4021.jpg</code> doesn't. Boxchive files pages under your organization's existing
+    naming convention — see <a href="/guides/file-naming-conventions/">file naming conventions</a>
+    if you don't have one yet.
+  </p>
+
+  <h2>What searching looks like in practice</h2>
+  <table>
+    <thead>
+      <tr><th>The question</th><th>What makes it answerable</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"Did the board ever vote on selling the north lot?"</td><td>OCR text of the minutes + document type "minutes"</td></tr>
+      <tr><td>"What do we have from 1962?"</td><td>Extracted dates on each page</td></tr>
+      <tr><td>"Every mention of a donor's family name"</td><td>OCR text + extracted names</td></tr>
+      <tr><td>"The original deed of gift for this object"</td><td>Document type + names + consistent filing</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Where search quietly fails: handwriting</h2>
+  <p>
+    The most dangerous search result is an empty one that's wrong. If a handwritten register was
+    never transcribed, a search for a name in it returns nothing — and it looks exactly like the
+    name isn't there.
+  </p>
+  <p>
+    Boxchive flags handwritten, faded and damaged pages and has them human-reviewed, and the
+    archive records which pages were transcribed confidently and which weren't. That way you know
+    what a search did and didn't cover. More in
+    <a href="/guides/handwriting-ocr/">handwriting OCR for old records</a>.
+  </p>
+
+  <h2>A checklist for any "searchable archive" claim</h2>
+  <p>Whether you're evaluating a vendor, a software product, or your own scanned files, ask:</p>
+  <ol>
+    <li>Can I search across the whole collection at once, not file by file?</li>
+    <li>Is there real OCR text behind every page?</li>
+    <li>What happens to handwritten pages — and will I know which ones weren't read?</li>
+    <li>Can I filter by date and document type?</li>
+    <li>Are files named in a way I'd understand without the software?</li>
+  </ol>
+</ContentLayout>

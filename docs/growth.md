@@ -64,3 +64,12 @@ https://search.google.com/search-console directly.
 - **Action:** project scaffolded via `portfolio new bootstrap`; first deploy pending. After deploy: verify in GSC as `sc-domain:boxchive.com` and submit the sitemap.
 - **Result:** TBD — review 2026-06-22
 - **Learning:** TBD
+
+## 2026-10-30 — Low-KD cost / archive / handwriting / naming / retention pages will earn non-home impressions
+- **Status:** active (built, pending deploy — review clock starts on deploy day)
+- **Hypothesis:** Buyers search the *task* (scanning cost, archive scanning, handwriting OCR, file naming, retention policy), not "digitization for [org type]" (those measure ~0 in SE Ranking). Ten answer-first pages targeting KD ≤ 20 clusters with 50–760 SV each will get the site indexed beyond `/` and produce impressions on the cost and archive pages first — the two closest to a purchase.
+- **KPI:** GSC impressions + indexed URLs for the 10 cluster-1 pages (`docs/seo-content-plan.md` § 6); secondary: assessment-form submissions from non-home landing pages (needs the form endpoint first).
+- **Baseline:** not measurable — GSC property not verified (see AI_AGENTS.md post-deploy checklist). Site had 1 URL in sitemap.
+- **Action:** v2.B — soft-404 fixed, absolute canonicals, WebSite/Breadcrumb/Article/FAQ schema, shared nav/footer, `/guides/` hub, `/llms.txt`, 10 new pages (plan § 6 cluster 1).
+- **Result:** TBD — review 28 days after deploy
+- **Learning:** TBD

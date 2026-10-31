@@ -170,4 +170,89 @@
     font-size: 0.95rem;
     border-bottom: 1px solid var(--ink);
   }
+
+  /* Long-form content on inner pages (no typography plugin). */
+  .prose-archive {
+    color: var(--ink);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-archive > * + * { margin-top: 1.25rem; }
+  .prose-archive h2 {
+    font-size: 2rem;
+    line-height: 1.15;
+    margin-top: 3.5rem;
+  }
+  .prose-archive h3 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-top: 2.25rem;
+  }
+  .prose-archive p, .prose-archive li { color: var(--ink-soft); }
+  .prose-archive strong { color: var(--ink); font-weight: 600; }
+  .prose-archive a {
+    color: var(--oxblood);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-archive ul { list-style: disc; padding-left: 1.25rem; }
+  .prose-archive ol { list-style: decimal; padding-left: 1.25rem; }
+  .prose-archive li + li { margin-top: 0.5rem; }
+  .prose-archive table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    display: block;
+    overflow-x: auto;
+  }
+  .prose-archive th, .prose-archive td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .prose-archive th {
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+  .prose-archive td { color: var(--ink-soft); }
+  .prose-archive .callout {
+    border-left: 3px solid var(--oxblood);
+    background: var(--paper-deep);
+    padding: 1rem 1.25rem;
+  }
+  .prose-archive .callout p { color: var(--ink); }
+  .prose-archive .source {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .prose-archive code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+    background: var(--paper-deep);
+    padding: 0.1rem 0.35rem;
+  }
+
+  .tool-panel {
+    border: 1px solid var(--rule);
+    background: var(--card);
+    padding: 1.5rem;
+  }
+  .tool-panel label { display: block; font-size: 0.85rem; color: var(--ink-soft); }
+  .tool-panel input, .tool-panel select {
+    width: 100%;
+    margin-top: 0.35rem;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    background: transparent;
+    padding: 0.4rem 0;
+    color: var(--ink);
+    font-size: 1rem;
+  }
+  .tool-panel input:focus, .tool-panel select:focus {
+    outline: none;
+    border-color: var(--oxblood);
+  }
 }

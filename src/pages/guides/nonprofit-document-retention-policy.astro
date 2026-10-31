@@ -1,0 +1,128 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+const faqs = [
+  {
+    q: "Is a document retention policy required for nonprofits?",
+    a: "Federal law doesn't require one outright, but IRS Form 990 (Part VI, line 14) asks whether the organization has a written document retention and destruction policy, so the answer is public. Funders and auditors also ask. Your state or funders may have their own requirements.",
+  },
+  {
+    q: "How long should a nonprofit keep board minutes?",
+    a: "Board minutes are generally treated as permanent records in nonprofit retention policies, along with articles of incorporation, bylaws and the IRS determination letter. Confirm with your counsel.",
+  },
+  {
+    q: "How long should we keep financial and tax records?",
+    a: "IRS guidance on keeping records says three years from filing in general, longer in specific situations (six years if income was substantially under-reported, seven years for bad-debt or worthless-securities claims) and at least four years for employment tax records. Many organizations keep core financial records longer; set periods with your accountant.",
+  },
+  {
+    q: "Can we destroy paper records after digitizing them?",
+    a: "Only where your adopted policy allows it for that record type, and only after confirming the digital copy is complete and readable. Historical and permanent records should be kept on paper even after digitizing.",
+  },
+];
+
+const categories = [
+  { cat: "Governing documents — articles of incorporation, bylaws and amendments, IRS determination letter", period: "Permanent", basis: "Common practice in sample nonprofit policies; confirm with counsel", digitize: "Digitize for access; keep originals" },
+  { cat: "Board and committee minutes, resolutions", period: "Permanent", basis: "Common practice in sample nonprofit policies; confirm with counsel", digitize: "High priority to digitize; keep originals" },
+  { cat: "Records supporting tax filings (Form 990 workpapers, receipts)", period: "At least 3 years from filing; longer in specific cases", basis: "IRS guidance on how long to keep records", digitize: "Digitize; destroy paper only if policy allows" },
+  { cat: "Employment tax records", period: "At least 4 years", basis: "IRS guidance on how long to keep records", digitize: "Digitize; follow policy for paper" },
+  { cat: "Contracts, leases, grant agreements", period: "Set with counsel (often life of agreement plus a period)", basis: "Varies by agreement and state", digitize: "Digitize active and recent" },
+  { cat: "Deeds, property and insurance records", period: "Set with counsel", basis: "Varies by asset and state", digitize: "Digitize; keep originals of deeds" },
+  { cat: "Donor and gift records, restricted-gift documentation", period: "Set with counsel and auditor", basis: "Varies; restrictions may run indefinitely", digitize: "Digitize; keep originals of restricted gifts" },
+  { cat: "Historical and archival material (photos, newsletters, correspondence of historical value)", period: "Permanent (archival)", basis: "Mission value, not legal minimum", digitize: "Digitize for access; keep originals" },
+];
+---
+<ContentLayout
+  title="Nonprofit Document Retention Policy: What to Keep, Digitize, or Destroy | Boxchive"
+  description="What a nonprofit document retention policy covers, why Form 990 asks about it, which records are typically kept permanently, IRS record-keeping periods, and how to decide what to digitize."
+  path="/guides/nonprofit-document-retention-policy/"
+  h1="Nonprofit document retention policy: what to keep, digitize, or destroy"
+  eyebrow="Guide"
+  lede="A document retention policy says how long your organization keeps each kind of record and how it disposes of them safely. IRS Form 990 asks whether you have one in writing. It's also the right starting point for any digitization project, because it tells you what's worth digitizing and what you're allowed to let go."
+  crumbs={[{ name: "Guides", path: "/guides/" }]}
+  faqs={faqs}
+  related={["/guides/digitizing-historical-documents/", "/guides/file-naming-conventions/", "/for/historical-societies/"]}
+>
+  <div class="callout">
+    <p>
+      <strong>Not legal advice.</strong> Retention periods depend on your state, your funders, and
+      your activities. Use this as a starting structure and have counsel or your accountant set the
+      periods your board adopts.
+    </p>
+  </div>
+
+  <h2>Why it matters</h2>
+  <ul>
+    <li><strong>Form 990 asks.</strong> Part VI, line 14 of IRS Form 990 asks whether the
+      organization has a written document retention and destruction policy. The answer is public.</li>
+    <li><strong>Federal law on destroying documents.</strong> The Sarbanes-Oxley Act of 2002 made it
+      a federal crime for any organization — nonprofits included — to destroy documents to obstruct
+      a federal investigation. A written policy applied consistently, with a way to suspend
+      destruction, is how organizations show that disposal is routine.</li>
+    <li><strong>Finding things.</strong> Without a policy, organizations keep everything forever in
+      basements, or throw out things they needed. Both happen.</li>
+  </ul>
+
+  <h2>What the policy should contain</h2>
+  <ol>
+    <li><strong>Scope.</strong> All records, paper and electronic, including email.</li>
+    <li><strong>A retention schedule.</strong> Record categories and how long each is kept.</li>
+    <li><strong>Responsibility.</strong> Who maintains the schedule and approves destruction.</li>
+    <li><strong>Destruction method.</strong> Shredding or secure disposal for confidential records.</li>
+    <li><strong>Suspension (legal hold).</strong> All destruction stops when litigation or an
+      investigation is pending or reasonably expected.</li>
+    <li><strong>Electronic records.</strong> Where digital copies live, how they're backed up, and
+      when a digital copy can replace paper.</li>
+    <li><strong>Review.</strong> How often the board reviews the policy.</li>
+  </ol>
+
+  <h2>A starting retention schedule</h2>
+  <p>
+    Periods below are either cited to IRS guidance or marked "set with counsel." We deliberately
+    don't invent numbers for categories that vary by state or agreement.
+  </p>
+  <table>
+    <thead>
+      <tr><th>Record category</th><th>Typical period</th><th>Basis</th><th>Digitize?</th></tr>
+    </thead>
+    <tbody>
+      {categories.map((c) => (
+        <tr><td>{c.cat}</td><td>{c.period}</td><td>{c.basis}</td><td>{c.digitize}</td></tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="source">
+    IRS figures: IRS, "How long should I keep records?" (general guidance; specific situations
+    differ). For full sample policies to adapt, see the sample policies published by Stanford Law
+    School's nonprofit documents project, Public Counsel's annotated retention policy, and the
+    AICPA's not-for-profit document retention sample.
+  </p>
+
+  <h2>Digitize, keep, or destroy?</h2>
+  <p>Once the schedule exists, every box falls into one of four groups:</p>
+  <table>
+    <thead>
+      <tr><th>Group</th><th>What to do</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Permanent and historical</strong></td><td>Digitize for access, keep the originals. These are the core of most digitization projects.</td></tr>
+      <tr><td><strong>Active, within retention</strong></td><td>Digitize what people use; follow the policy on whether paper can go.</td></tr>
+      <tr><td><strong>Past retention, no hold</strong></td><td>Destroy securely per the policy — don't spend money digitizing records you're allowed to discard.</td></tr>
+      <tr><td><strong>Unknown</strong></td><td>Inventory first, then classify. Don't destroy anything you can't categorize.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Turning the policy into a project</h2>
+  <p>
+    The "permanent and historical" group is usually the biggest and the most-requested — minutes,
+    founding documents, deeds, registers, newsletters, correspondence. That's where a searchable
+    archive pays off first. Our
+    <a href="/guides/digitizing-historical-documents/">guide to digitizing historical documents</a>
+    walks through the steps, and consistent
+    <a href="/guides/file-naming-conventions/">file naming</a> keeps digital copies tied to the
+    categories in your schedule.
+  </p>
+  <p>
+    Boxchive classifies each page by document type and files it under your naming convention, so
+    the digital archive lines up with the record categories your policy uses.
+  </p>
+</ContentLayout>

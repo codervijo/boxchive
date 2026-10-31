@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+<BaseLayout
+  title="Page not found | Boxchive"
+  description="This page doesn't exist. Head back to Boxchive's homepage or guides."
+  canonical="/404"
+  noindex
+>
+  <SiteHeader />
+  <main class="container-prose py-24 md:py-32 relative">
+    <p class="eyebrow mb-6">404</p>
+    <h1 class="font-serif text-5xl md:text-6xl leading-tight">This page isn't in the archive.</h1>
+    <p class="mt-6 text-lg text-[color:var(--ink-soft)] max-w-xl">
+      The link may be old or mistyped. Try the homepage or the guides.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-6">
+      <a href="/" class="btn-primary">Go to the homepage</a>
+      <a href="/guides/" class="btn-ghost">Browse guides</a>
+    </div>
+  </main>
+  <SiteFooter />
+</BaseLayout>

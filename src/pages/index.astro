@@ -1,16 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { PRICING, PRICING_FALLBACK } from "../data/pricing";
 import heroArchive from "../assets/hero-archive.jpg";
 import phoneDocument from "../assets/phone-document.jpg";
 
 const title =
   "Boxchive — Digitize old paper archives without a $50K vendor quote";
 const description =
-  "Boxchive turns phone photos of old paper documents into a searchable, organized digital archive. A practical alternative to enterprise scanning for museums, historical societies, law firms, churches, and libraries — from about $100/month.";
+  "Boxchive turns phone photos of old paper documents into a searchable, organized digital archive. A practical alternative to enterprise scanning for museums, historical societies, law firms, churches, and libraries.";
 const keywords =
   "digitize museum archives cost, scan old documents historical society, document digitization without enterprise vendor, archive OCR, church records digitization, law firm file digitization";
 const ogDescription =
-  "Photograph the pages with a phone. Boxchive reads, sorts, and files them into a searchable archive — from about $100/month.";
+  "Photograph the pages with a phone. Boxchive reads, sorts, and files them into a searchable archive.";
 const twitterTitle = "Boxchive — Digitize old paper archives";
 const twitterDescription =
   "A subscription alternative to $50K enterprise scanning. Phone photos in, searchable archive out.";
@@ -28,19 +31,6 @@ const serviceLd = {
   },
   description:
     "Boxchive turns phone photos of old paper documents into a searchable, organized digital archive. OCR, date and name extraction, document-type classification, and naming-convention–aware filing.",
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "USD",
-    lowPrice: "100",
-    highPrice: "500",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      billingIncrement: 1,
-      unitCode: "MON",
-      price: "100-500",
-      priceCurrency: "USD",
-    },
-  },
 };
 
 const steps = [
@@ -73,11 +63,13 @@ const steps = [
 const groups = [
   {
     label: "Museums",
+    href: "/for/museums/",
     body:
       "Preserve heritage collections, make accession files and curatorial records searchable, and support access projects, grant reporting, and exhibition research.",
   },
   {
     label: "Historical societies",
+    href: "/for/historical-societies/",
     body:
       "Rescue local records from boxes, filing cabinets, and back rooms. Make minutes, photographs, registers, and ephemera searchable for members and researchers.",
   },
@@ -110,7 +102,6 @@ const orgTypes = [
 const volumes = ["Under 5 boxes", "5–20 boxes", "20+ boxes", "Not sure"];
 const materials = ["Typed/printed", "Handwritten", "Mixed"];
 
-const year = new Date().getFullYear();
 ---
 <BaseLayout
   title={title}
@@ -127,15 +118,7 @@ const year = new Date().getFullYear();
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceLd)} />
 
   <main class="relative">
-    <header class="container-prose pt-8 pb-6 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
-        <span class="font-serif text-2xl tracking-tight">Boxchive</span>
-        <span class="eyebrow hidden sm:inline">Est. for archives</span>
-      </a>
-      <a href="#assessment" class="btn-ghost text-sm">
-        Free assessment →
-      </a>
-    </header>
+    <SiteHeader />
 
     <section class="container-prose pt-10 pb-24 md:pt-16 md:pb-32 grid md:grid-cols-12 gap-10 items-center">
       <div class="md:col-span-7">
@@ -194,21 +177,27 @@ const year = new Date().getFullYear();
           </div>
           <div class="bg-[color:var(--paper)] p-8 md:p-10">
             <p class="eyebrow mb-4 text-[color:var(--oxblood)]">Boxchive</p>
-            <p class="font-serif text-5xl md:text-6xl">
-              $100<span class="text-2xl align-top">–</span>$500
-              <span class="text-2xl text-[color:var(--ink-soft)]"> / month</span>
-            </p>
+            {PRICING ? (
+              <p class="font-serif text-5xl md:text-6xl">
+                ${PRICING.monthlyFrom}<span class="text-2xl align-top">–</span>${PRICING.monthlyTo}
+                <span class="text-2xl text-[color:var(--ink-soft)]"> / month</span>
+              </p>
+            ) : (
+              <p class="font-serif text-3xl md:text-4xl leading-snug">Quoted after a free assessment</p>
+            )}
             <ul class="mt-6 space-y-3 text-[color:var(--ink-soft)]">
               <li>— A volunteer, a phone, and a subscription</li>
               <li>— Records stay on your shelves</li>
-              <li>— Complex processing around $0.05 / page</li>
+              <li>— OCR, dates, names, and document types on every page</li>
               <li>— Cancel when the boxes are done</li>
             </ul>
           </div>
         </div>
         <p class="mt-8 text-sm text-[color:var(--ink-soft)] italic max-w-2xl">
-          Pricing depends on volume and material complexity. We'll give you a real number after a
-          free assessment — not a six-figure ballpark.
+          {PRICING ? "Pricing depends on volume and material complexity." : PRICING_FALLBACK}{" "}
+          We'll give you a real number after a free assessment — not a six-figure ballpark.
+          Comparing quotes? See <a href="/document-scanning-cost/" class="underline underline-offset-4">published
+          per-page scanning prices and a box calculator</a>.
         </p>
       </div>
     </section>
@@ -232,6 +221,9 @@ const year = new Date().getFullYear();
           />
         </div>
       </div>
+      <p class="mb-10">
+        <a href="/archive-digitization/" class="btn-ghost">Archive digitization, step by step</a>
+      </p>
       <div class="rule mb-12"></div>
       <ol class="grid md:grid-cols-2 gap-x-12 gap-y-14">
         {steps.map((s) => (
@@ -262,7 +254,9 @@ const year = new Date().getFullYear();
                 i === groups.length - 1 && "md:border-b",
               ]}
             >
-              <h3 class="font-serif text-2xl md:text-3xl mb-3">{g.label}</h3>
+              <h3 class="font-serif text-2xl md:text-3xl mb-3">
+                {g.href ? <a href={g.href} class="hover:text-[color:var(--oxblood)]">{g.label} →</a> : g.label}
+              </h3>
               <p class="text-[color:var(--ink-soft)] leading-relaxed max-w-xl">{g.body}</p>
             </article>
           ))}
@@ -281,6 +275,9 @@ const year = new Date().getFullYear();
           fragile pages are flagged and human-reviewed for quality before they land in your archive.
           You get an honest record of what was confidently transcribed and what needs a second pair
           of eyes — not a false sense of completeness.
+        </p>
+        <p class="mt-6">
+          <a href="/guides/handwriting-ocr/" class="btn-ghost">How handwriting OCR works on old records</a>
         </p>
       </div>
     </section>
@@ -416,16 +413,9 @@ const year = new Date().getFullYear();
       </div>
     </section>
 
-    <footer class="border-t border-[color:var(--rule)]">
-      <div class="container-prose py-10 flex flex-wrap items-center justify-between gap-4 text-sm text-[color:var(--ink-soft)]">
-        <p>
-          <span class="font-serif text-base text-[color:var(--ink)]">Boxchive</span> ·
-          Searchable archives for institutions with long memories.
-        </p>
-        <p>© {year} Boxchive.</p>
-      </div>
-    </footer>
   </main>
+
+  <SiteFooter />
 
   <script>
     const form = document.getElementById("lead-form") as HTMLFormElement | null;

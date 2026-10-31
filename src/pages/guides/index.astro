@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import AssessmentCta from "../../components/AssessmentCta.astro";
+import { byFamily, FAMILY_LABELS, type Family } from "../../data/pages";
+
+const families: Family[] = ["guides", "solutions", "audiences"];
+const site = Astro.site ?? new URL("https://boxchive.com");
+
+const collectionLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Guides to digitizing records",
+  url: new URL("/guides/", site).href,
+  hasPart: byFamily("guides").map((p) => ({
+    "@type": "Article",
+    headline: p.label,
+    url: new URL(p.path, site).href,
+  })),
+};
+---
+<BaseLayout
+  title="Guides to Digitizing Old Records & Archives | Boxchive"
+  description="Practical guides for small archives: digitizing historical documents, handwriting OCR, file naming conventions, retention policies, and what scanning costs."
+  canonical="/guides/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(collectionLd)} />
+  <SiteHeader />
+  <main class="relative">
+    <section class="container-prose pt-6 pb-14">
+      <p class="eyebrow mb-5">Guides</p>
+      <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl">
+        Guides to digitizing old records
+      </h1>
+      <p class="mt-6 text-lg text-[color:var(--ink-soft)] max-w-2xl leading-relaxed">
+        Written for small museums, historical societies, churches, libraries and law firms with
+        boxes of paper and no IT department.
+      </p>
+    </section>
+
+    {families.map((f) => (
+      <section class="container-prose pb-14">
+        <h2 class="eyebrow mb-6">{FAMILY_LABELS[f]}</h2>
+        <div class="grid md:grid-cols-2 gap-px bg-[color:var(--rule)] border border-[color:var(--rule)]">
+          {byFamily(f).map((p) => (
+            <a href={p.path} class="bg-[color:var(--paper)] p-7 hover:bg-[color:var(--paper-deep)] transition-colors">
+              <h3 class="font-serif text-2xl mb-2">{p.label}</h3>
+              <p class="text-[color:var(--ink-soft)] leading-relaxed">{p.summary}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <AssessmentCta />
+  </main>
+  <SiteFooter />
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import { findPages } from "../data/pages";
+
+export interface Props {
+  paths: string[];
+}
+
+const related = findPages(Astro.props.paths);
+---
+{related.length > 0 && (
+  <section class="container-prose py-16" aria-labelledby="related-heading">
+    <p id="related-heading" class="eyebrow mb-6">Related</p>
+    <div class="grid md:grid-cols-3 gap-px bg-[color:var(--rule)] border border-[color:var(--rule)]">
+      {related.map((p) => (
+        <a href={p.path} class="bg-[color:var(--paper)] p-6 hover:bg-[color:var(--paper-deep)] transition-colors">
+          <h3 class="font-serif text-xl mb-2">{p.label}</h3>
+          <p class="text-sm text-[color:var(--ink-soft)] leading-relaxed">{p.summary}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

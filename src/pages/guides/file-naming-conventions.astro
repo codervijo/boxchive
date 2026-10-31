@@ -1,0 +1,169 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+const faqs = [
+  {
+    q: "What is a file naming convention?",
+    a: "An agreed pattern for naming files so that anyone can tell what a file contains, and files sort in a useful order, without opening them — for example 1962-03-14_board-minutes_p01.jpg.",
+  },
+  {
+    q: "What date format should I use in file names?",
+    a: "YYYY-MM-DD (the ISO 8601 format). It's unambiguous internationally and sorts chronologically when files are sorted alphabetically. MM-DD-YYYY sorts by month instead.",
+  },
+  {
+    q: "Should I use underscores or hyphens in file names?",
+    a: "Either works if you're consistent. A common pattern is underscores between elements and hyphens within an element: 1962-03-14_board-minutes_p01. Avoid spaces and special characters.",
+  },
+  {
+    q: "Can Boxchive use our existing naming convention?",
+    a: "Yes. Boxchive files pages using your organization's existing naming convention.",
+  },
+];
+---
+<ContentLayout
+  title="File Naming Conventions for Scanned Records (with Builder) | Boxchive"
+  description="File naming convention rules, examples for minutes, correspondence, registers and case files, and a free builder that turns your choices into a consistent pattern for scanned and photographed documents."
+  path="/guides/file-naming-conventions/"
+  h1="File naming conventions for scanned records"
+  eyebrow="Guide · with tool"
+  lede="A file naming convention is an agreed pattern — like 1962-03-14_board-minutes_p01 — that tells anyone what a file is and keeps files in a useful order without opening them. Decide it before the first page is captured; renaming thousands of files later is the job nobody finishes."
+  crumbs={[{ name: "Guides", path: "/guides/" }]}
+  faqs={faqs}
+  related={["/searchable-archive/", "/guides/digitizing-historical-documents/", "/archive-digitization/"]}
+>
+  <h2>The rules</h2>
+  <ol>
+    <li><strong>Dates as YYYY-MM-DD.</strong> ISO 8601 format sorts chronologically and can't be
+      misread. Use <code>1962-03</code> or <code>1962</code> when that's all you know.</li>
+    <li><strong>Same elements, same order, every time.</strong> For example: date, document type,
+      subject, page.</li>
+    <li><strong>No spaces or special characters.</strong> Stick to letters, numbers, hyphens and
+      underscores. Avoid <code>/ \ : * ? " &lt; &gt; | # % &amp;</code>.</li>
+    <li><strong>Leading zeros on numbers.</strong> <code>p01</code>…<code>p12</code> sorts
+      correctly; <code>p1</code>, <code>p10</code>, <code>p2</code> doesn't.</li>
+    <li><strong>A short, controlled vocabulary.</strong> Pick one term per document type —
+      <code>minutes</code>, not sometimes <code>mins</code> and sometimes
+      <code>meeting-notes</code> — and write the list down.</li>
+    <li><strong>Lowercase.</strong> Avoids duplicates that differ only in capitals.</li>
+    <li><strong>Short but meaningful.</strong> Enough to identify the item; the detail belongs in
+      the record's description and text, not the filename.</li>
+  </ol>
+
+  <h2>Patterns for common records</h2>
+  <table>
+    <thead>
+      <tr><th>Record type</th><th>Pattern</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Board minutes</td><td>date_type_page</td><td><code>1962-03-14_board-minutes_p02</code></td></tr>
+      <tr><td>Correspondence</td><td>date_type_correspondent_page</td><td><code>1958-11-02_letter_hendricks_p01</code></td></tr>
+      <tr><td>Registers / ledgers</td><td>series_volume_page</td><td><code>baptism-register_v03_p147</code></td></tr>
+      <tr><td>Accession / case files</td><td>identifier_type_page</td><td><code>1987-014_deed-of-gift_p01</code></td></tr>
+      <tr><td>Newsletters</td><td>date_type_page</td><td><code>1975-06_newsletter_p04</code></td></tr>
+      <tr><td>Clippings</td><td>date_type_publication</td><td><code>1971-08-22_clipping_county-herald</code></td></tr>
+    </tbody>
+  </table>
+  <p>
+    Bound registers are the exception to "date first": the volume and page number are how people
+    cite them, so lead with the series.
+  </p>
+
+  <h2>Build your pattern</h2>
+  <p>Pick your elements and see the result. Nothing is sent anywhere — this runs in your browser.</p>
+
+  <div class="tool-panel" id="fname-builder">
+    <div class="grid sm:grid-cols-2 gap-5">
+      <label>Organization prefix (optional)
+        <input type="text" maxlength="12" placeholder="e.g. chs" data-f="prefix" />
+      </label>
+      <label>Date
+        <input type="text" placeholder="1962-03-14, 1962-03, or 1962" value="1962-03-14" data-f="date" />
+      </label>
+      <label>Document type
+        <select data-f="type">
+          <option value="board-minutes">Board minutes</option>
+          <option value="letter">Letter / correspondence</option>
+          <option value="register">Register</option>
+          <option value="ledger">Ledger</option>
+          <option value="deed">Deed</option>
+          <option value="deed-of-gift">Deed of gift</option>
+          <option value="newsletter">Newsletter</option>
+          <option value="clipping">Clipping</option>
+          <option value="case-file">Case file</option>
+          <option value="report">Report</option>
+        </select>
+      </label>
+      <label>Subject / name (optional)
+        <input type="text" placeholder="e.g. Hendricks" data-f="subject" />
+      </label>
+      <label>Page number
+        <input type="number" min="1" value="1" data-f="page" />
+      </label>
+      <label>Page digits
+        <select data-f="digits">
+          <option value="2">2 (p01–p99)</option>
+          <option value="3">3 (p001–p999)</option>
+          <option value="4">4 (p0001–p9999)</option>
+        </select>
+      </label>
+    </div>
+    <div class="mt-6 border-t border-[color:var(--rule)] pt-5" aria-live="polite">
+      <p class="eyebrow mb-2">Your file name</p>
+      <p class="font-mono text-lg break-all" data-out-name>—</p>
+      <p class="mt-2 text-sm text-[color:var(--ink-soft)]" data-out-note></p>
+    </div>
+  </div>
+
+  <h2>Folders</h2>
+  <p>
+    Keep folder structure shallow and mirror how your paper is organized: series, then year or
+    volume. For example <code>board-minutes/1962/</code> or <code>baptism-register/v03/</code>.
+    The filename should still make sense on its own if it ends up outside its folder — that's why
+    the date and type stay in the filename too.
+  </p>
+
+  <h2>Write it down</h2>
+  <p>
+    A one-page document is enough: the element order, the date format, the document-type
+    vocabulary, and two or three worked examples. Keep it with the archive. Every volunteer who
+    joins later will need it.
+  </p>
+
+  <h2>If you already have a convention</h2>
+  <p>
+    Keep it. Consistency with your existing paper files beats a theoretically better pattern.
+    Boxchive files pages using your organization's existing naming convention, so the digital
+    archive matches the way your people already find things.
+  </p>
+
+  <script>
+    const root = document.getElementById("fname-builder");
+    if (root) {
+      const val = (k: string) =>
+        (root.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-f="${k}"]`)?.value ?? "").trim();
+      const slug = (s: string) =>
+        s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "")
+          .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      const out = root.querySelector("[data-out-name]");
+      const note = root.querySelector("[data-out-note]");
+      const update = () => {
+        if (!out || !note) return;
+        const date = val("date");
+        const dateOk = /^\d{4}(-\d{2}(-\d{2})?)?$/.test(date);
+        const digits = parseInt(val("digits"), 10) || 2;
+        const pageNum = Math.max(1, parseInt(val("page"), 10) || 1);
+        const page = "p" + String(pageNum).padStart(digits, "0");
+        const parts = [slug(val("prefix")), dateOk ? date : "", val("type"), slug(val("subject")), page]
+          .filter(Boolean);
+        out.textContent = parts.join("_") + ".jpg";
+        note.textContent = !date
+          ? "No date entered — files will sort by type instead of chronologically."
+          : dateOk
+            ? "Sorts by date, then type. Use the same order for every file."
+            : "Use YYYY-MM-DD, YYYY-MM, or YYYY so files sort chronologically.";
+      };
+      root.addEventListener("input", update);
+      update();
+    }
+  </script>
+</ContentLayout>

@@ -1,0 +1,110 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+const faqs = [
+  {
+    q: "Can OCR read handwriting?",
+    a: "Standard OCR is designed for printed and typed text and does poorly on handwriting. Handwritten text recognition (HTR) is a separate kind of model trained on handwriting. It works far better, but results on old cursive vary a lot with the hand, the ink, and the condition of the page.",
+  },
+  {
+    q: "How do I convert cursive to text?",
+    a: "For a few pages, phone apps and general handwriting-to-text tools are worth trying. For historical records in volume, use a dedicated handwritten text recognition platform, a human transcription effort, or a service that combines recognition with human review — and check samples before committing.",
+  },
+  {
+    q: "What is the best OCR for old handwritten documents?",
+    a: "There's no single answer — it depends on the script, language, era and condition. Dedicated HTR platforms such as Transkribus are built for historical documents. Test any tool on a representative sample of your own pages, including your worst ones.",
+  },
+  {
+    q: "How does Boxchive handle handwritten pages?",
+    a: "Handwritten, faded and damaged pages are flagged and human-reviewed before they land in your archive, and the archive records which pages were transcribed confidently and which need a second look.",
+  },
+];
+---
+<ContentLayout
+  title="Handwriting OCR for Old Records: Converting Cursive to Text | Boxchive"
+  description="Why ordinary OCR fails on handwriting, how handwritten text recognition differs, your options for old cursive records, and how to photograph pages for the best results."
+  path="/guides/handwriting-ocr/"
+  h1="Handwriting OCR for old records"
+  eyebrow="Guide"
+  lede="Ordinary OCR was built to read print. Handwriting needs a different technology — handwritten text recognition — and even that struggles with century-old cursive, faded ink and damaged pages. Here's what works, what doesn't, and how to avoid a searchable archive that silently skips your registers."
+  crumbs={[{ name: "Guides", path: "/guides/" }]}
+  faqs={faqs}
+  related={["/searchable-archive/", "/guides/digitizing-historical-documents/", "/for/historical-societies/"]}
+>
+  <h2>OCR vs. handwritten text recognition</h2>
+  <table>
+    <thead>
+      <tr><th></th><th>OCR</th><th>Handwritten text recognition (HTR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Built for</strong></td><td>Printed and typed characters</td><td>Connected, variable handwriting</td></tr>
+      <tr><td><strong>Works well on</strong></td><td>Typed minutes, printed newsletters, forms</td><td>Consistent, legible hands; scripts it was trained on</td></tr>
+      <tr><td><strong>Struggles with</strong></td><td>Any handwriting; faint carbons</td><td>Unusual scripts, abbreviations, faded ink, crowded layouts</td></tr>
+    </tbody>
+  </table>
+  <p>
+    If a tool calls itself "handwriting OCR," it's usually HTR under the hood. The label matters
+    less than how it does on <em>your</em> pages.
+  </p>
+
+  <h2>Why old handwriting is hard</h2>
+  <ul>
+    <li><strong>Scripts change.</strong> Nineteenth-century copperplate, clerks' hands, and
+      twentieth-century cursive look very different, and letterforms that are obvious to a human
+      reader confuse models.</li>
+    <li><strong>Abbreviations and conventions.</strong> Registers and ledgers are full of
+      shorthand: "do." for ditto, abbreviated names and months, superscripts.</li>
+    <li><strong>Ink and paper.</strong> Faded iron-gall ink, bleed-through, foxing, and water
+      damage remove the contrast recognition depends on.</li>
+    <li><strong>Layout.</strong> Ruled ledger columns, marginal notes, and entries written across
+      each other break the reading order.</li>
+    <li><strong>Many hands.</strong> A register kept for sixty years may have dozens of writers.</li>
+  </ul>
+
+  <h2>Your options</h2>
+  <h3>Phone apps and general handwriting-to-text tools</h3>
+  <p>
+    Fine for a handful of modern, legible pages. Rarely enough for historical volumes: results
+    vary, and most give no indication of which words they guessed.
+  </p>
+  <h3>Dedicated handwritten text recognition platforms</h3>
+  <p>
+    Platforms such as Transkribus are built for historical documents and can be trained on a
+    specific hand. They're powerful and suit projects with someone willing to learn the tool and
+    correct output.
+  </p>
+  <h3>Human transcription</h3>
+  <p>
+    Volunteers or paid transcribers remain the most accurate route for difficult material, and
+    many historical societies run transcription projects. It's slow, and it needs consistent rules
+    for abbreviations and uncertain readings.
+  </p>
+  <h3>A service with recognition plus review</h3>
+  <p>
+    The middle path: machine recognition on everything, human review on the pages that need it,
+    and a record of which is which. That's how Boxchive works.
+  </p>
+
+  <h2>Getting the best results from photos</h2>
+  <ul>
+    <li><strong>Light evenly.</strong> Diffuse daylight or two lamps at angles; no flash glare.</li>
+    <li><strong>Hold the phone parallel</strong> to the page so lines aren't skewed.</li>
+    <li><strong>Fill the frame</strong> with one page, and include the edges so nothing is cut off.</li>
+    <li><strong>Focus on the writing</strong>, and retake anything blurry — recognition can't recover
+      detail the photo didn't capture.</li>
+    <li><strong>Keep page order</strong> consistent so entries that run across pages stay together.</li>
+  </ul>
+
+  <h2>Don't let search silently skip handwritten pages</h2>
+  <p>
+    The real risk isn't a typo in a transcription. It's a search that returns nothing because a
+    register was never read — which looks exactly like "we don't have that." Whatever tool you use,
+    keep track of which pages were transcribed confidently, which were partial, and which weren't
+    read at all.
+  </p>
+  <p>
+    Boxchive flags handwritten, faded and damaged pages for human review, and your archive records
+    what was confidently transcribed and what needs a second pair of eyes. More on how this fits
+    into search: <a href="/searchable-archive/">what makes an archive searchable</a>.
+  </p>
+</ContentLayout>
